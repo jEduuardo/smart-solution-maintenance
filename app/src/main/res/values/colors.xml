@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors -->
+    <color name="primary">#0D47A1</color>
+    <color name="primary_dark">#002171</color>
+    <color name="primary_light">#5472D3</color>
+    <color name="accent">#00BCD4</color>
+    <color name="accent_dark">#0097A7</color>
+
+    <!-- Status Colors -->
+    <color name="success">#2E7D32</color>
+    <color name="success_light">#E8F5E9</color>
+    <color name="warning">#F57F17</color>
+    <color name="warning_light">#FFF8E1</color>
+    <color name="danger">#C62828</color>
+    <color name="danger_light">#FFEBEE</color>
+    <color name="info">#0288D1</color>
+    <color name="info_light">#E1F5FE</color>
+
+    <!-- Neutral -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+
+    <!-- Background -->
+    <color name="background">#F0F4FF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+
+    <!-- Text -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#616161</color>
+    <color name="text_hint">#9E9E9E</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Chart Colors -->
+    <color name="chart_agua">#0288D1</color>
+    <color name="chart_energia">#F57F17</color>
+    <color name="chart_manutencao">#7B1FA2</color>
+
+    <!-- Priority Colors -->
+    <color name="priority_alta">#C62828</color>
+    <color name="priority_media">#F57F17</color>
+    <color name="priority_baixa">#2E7D32</color>
+
+    <!-- Splash -->
+    <color name="splash_background">#0D47A1</color>
+</resources>

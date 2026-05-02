@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Solution</string>
+    <string name="app_subtitle">Gestão Inteligente de Manutenção</string>
+
+    <!-- Auth -->
+    <string name="login">Entrar</string>
+    <string name="logout">Sair</string>
+    <string name="register">Criar Conta</string>
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="confirm_password">Confirmar Senha</string>
+    <string name="name">Nome Completo</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="no_account">Não tem conta? Cadastre-se</string>
+    <string name="has_account">Já tem conta? Entre</string>
+
+    <!-- Nav -->
+    <string name="dashboard">Dashboard</string>
+    <string name="instituicoes">Instituições</string>
+    <string name="equipamentos">Equipamentos</string>
+    <string name="manutencoes">Manutenções</string>
+    <string name="consumo">Consumo</string>
+    <string name="alertas">Alertas</string>
+    <string name="atividades">Atividades</string>
+    <string name="perfil">Perfil</string>
+
+    <!-- Actions -->
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="buscar">Buscar</string>
+    <string name="filtrar">Filtrar</string>
+    <string name="confirmar">Confirmar</string>
+
+    <!-- Instituição -->
+    <string name="nome_instituicao">Nome da Instituição</string>
+    <string name="cnpj">CNPJ</string>
+    <string name="endereco">Endereço</string>
+    <string name="telefone">Telefone</string>
+    <string name="responsavel">Responsável</string>
+    <string name="setor">Setor</string>
+    <string name="novo_setor">Novo Setor</string>
+    <string name="setores">Setores</string>
+
+    <!-- Equipamento -->
+    <string name="nome_equipamento">Nome do Equipamento</string>
+    <string name="codigo_patrimonio">Código Patrimônio</string>
+    <string name="modelo">Modelo</string>
+    <string name="fabricante">Fabricante</string>
+    <string name="data_aquisicao">Data de Aquisição</string>
+    <string name="status_equipamento">Status</string>
+    <string name="proxima_manutencao">Próxima Manutenção</string>
+
+    <!-- Manutenção -->
+    <string name="tipo_manutencao">Tipo de Manutenção</string>
+    <string name="preventiva">Preventiva</string>
+    <string name="corretiva">Corretiva</string>
+    <string name="data_manutencao">Data da Manutenção</string>
+    <string name="descricao">Descrição</string>
+    <string name="tecnico_responsavel">Técnico Responsável</string>
+    <string name="custo">Custo (R$)</string>
+    <string name="prioridade">Prioridade</string>
+    <string name="alta">Alta</string>
+    <string name="media">Média</string>
+    <string name="baixa">Baixa</string>
+    <string name="status_manutencao">Status da Manutenção</string>
+    <string name="pendente">Pendente</string>
+    <string name="em_andamento">Em Andamento</string>
+    <string name="concluida">Concluída</string>
+
+    <!-- Consumo -->
+    <string name="tipo_consumo">Tipo de Consumo</string>
+    <string name="agua">Água</string>
+    <string name="energia">Energia</string>
+    <string name="valor_consumo">Valor</string>
+    <string name="unidade">Unidade</string>
+    <string name="periodo">Período</string>
+    <string name="mes">Mês</string>
+    <string name="ano">Ano</string>
+
+    <!-- Alertas -->
+    <string name="alerta_anomalia">Anomalia Detectada</string>
+    <string name="alerta_manutencao">Manutenção Próxima</string>
+    <string name="alerta_consumo">Consumo Elevado</string>
+
+    <!-- Mensagens -->
+    <string name="loading">Carregando...</string>
+    <string name="sem_dados">Nenhum dado encontrado</string>
+    <string name="erro_generico">Ocorreu um erro. Tente novamente.</string>
+    <string name="sucesso_salvar">Registro salvo com sucesso!</string>
+    <string name="sucesso_excluir">Registro excluído com sucesso!</string>
+    <string name="confirmar_exclusao">Deseja realmente excluir este registro?</string>
+    <string name="campos_obrigatorios">Preencha todos os campos obrigatórios.</string>
+</resources>
