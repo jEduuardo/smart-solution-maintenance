@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "281514113297",
+    "project_id": "bancosmartsolution",
+    "storage_bucket": "bancosmartsolution.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281514113297:android:bffdfd61b8d5025c0a34b0",
+        "android_client_info": {
+          "package_name": "com.example.smartsolutionmaintenance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-2_UMADDApGUpLG2JTWK_jHhGThXT8ao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

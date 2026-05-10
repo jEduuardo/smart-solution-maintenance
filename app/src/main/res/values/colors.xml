@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cores Primárias Smart Solution -->
+    <color name="primary">#1565C0</color>
+    <color name="primary_dark">#003c8f</color>
+    <color name="primary_light">#5e92f3</color>
+    <color name="accent">#FF6F00</color>
+    <color name="accent_light">#FFA040</color>
+
+    <!-- Cores de Status -->
+    <color name="verde">#2E7D32</color>
+    <color name="verde_light">#E8F5E9</color>
+    <color name="vermelho">#C62828</color>
+    <color name="vermelho_light">#FFEBEE</color>
+    <color name="amarelo">#F9A825</color>
+    <color name="amarelo_light">#FFFDE7</color>
+    <color name="azul">#1565C0</color>
+    <color name="azul_light">#E3F2FD</color>
+    <color name="laranja">#E65100</color>
+    <color name="laranja_light">#FFF3E0</color>
+
+    <!-- Neutros -->
+    <color name="branco">#FFFFFF</color>
+    <color name="cinza_claro">#F5F5F5</color>
+    <color name="cinza">#9E9E9E</color>
+    <color name="cinza_escuro">#424242</color>
+    <color name="preto">#212121</color>
+    <color name="fundo">#F0F4F8</color>
+
+    <!-- Prioridades -->
+    <color name="prioridade_alta">#D32F2F</color>
+    <color name="prioridade_media">#F57C00</color>
+    <color name="prioridade_baixa">#388E3C</color>
+
+    <!-- Consumo -->
+    <color name="agua">#0288D1</color>
+    <color name="energia">#F9A825</color>
+
+    <!-- Card -->
+    <color name="card_shadow">#1A000000</color>
+</resources>

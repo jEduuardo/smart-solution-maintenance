@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Solution Maintenance</string>
+    <string name="login_titulo">Smart Solution Maintenance</string>
+    <string name="login_subtitulo">Sistema de Gestão de Recursos</string>
+    <string name="email_hint">E-mail</string>
+    <string name="senha_hint">Senha</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="esqueceu_senha">Esqueceu a senha?</string>
+    <string name="dashboard_titulo">Dashboard</string>
+    <string name="consumo_agua">Consumo de Água</string>
+    <string name="consumo_energia">Consumo de Energia</string>
+    <string name="manutencoes">Manutenções</string>
+    <string name="alertas">Alertas</string>
+    <string name="equipamentos">Equipamentos</string>
+    <string name="instituicoes">Instituições</string>
+    <string name="registro_atividades">Registro de Atividades</string>
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="pendente">Pendente</string>
+    <string name="em_andamento">Em Andamento</string>
+    <string name="concluido">Concluído</string>
+    <string name="alta">Alta</string>
+    <string name="media">Média</string>
+    <string name="baixa">Baixa</string>
+</resources>

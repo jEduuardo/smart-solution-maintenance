@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.SmartSolutionMaintenance"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/branco</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_light</item>
+        <item name="colorOnSecondary">@color/branco</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/primary_dark</item>
+        <item name="android:windowBackground">@color/fundo</item>
+    </style>
+
+    <style name="Theme.SmartSolutionMaintenance.Splash" parent="Base.Theme.SmartSolutionMaintenance">
+        <item name="android:windowBackground">@color/primary</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Theme.SmartSolutionMaintenance.NoActionBar" parent="Base.Theme.SmartSolutionMaintenance">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Botão Primário -->
+    <style name="BotaoPrimario" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/branco</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Card Style -->
+    <style name="CardApae" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardBackgroundColor">@color/branco</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <!-- Título de Seção -->
+    <style name="TituloSecao">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/preto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Subtítulo -->
+    <style name="Subtitulo">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/cinza</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+</resources>
