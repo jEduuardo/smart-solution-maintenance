@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsolutionmaintenance.R;
@@ -39,19 +37,11 @@ public class RegistroAtividadeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_atividade);
-
         db = FirebaseFirestore.getInstance();
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Registro de Atividades");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
 
         recyclerView = findViewById(R.id.recyclerViewAtividades);
         fabAdicionar = findViewById(R.id.fabAdicionar);
-        layoutVazio = findViewById(R.id.layoutVazio);
+        layoutVazio  = findViewById(R.id.layoutVazio);
 
         listaAtividades = new ArrayList<>();
         adapter = new AtividadeAdapter(listaAtividades);
@@ -59,14 +49,13 @@ public class RegistroAtividadeActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         fabAdicionar.setOnClickListener(v -> mostrarDialogNovaAtividade());
-
         carregarAtividades();
     }
 
     private void mostrarDialogNovaAtividade() {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_nova_atividade, null);
-        TextInputEditText edtDescricao = dialogView.findViewById(R.id.edtDescricaoAtividade);
-        TextInputEditText edtLocal = dialogView.findViewById(R.id.edtLocal);
+        TextInputEditText edtDescricao  = dialogView.findViewById(R.id.edtDescricaoAtividade);
+        TextInputEditText edtLocal      = dialogView.findViewById(R.id.edtLocal);
         AutoCompleteTextView spinnerTipo = dialogView.findViewById(R.id.spinnerTipoAtividade);
 
         String[] tipos = {"Manutenção", "Inspeção", "Limpeza", "Reparo", "Instalação", "Outros"};
@@ -82,11 +71,10 @@ public class RegistroAtividadeActivity extends AppCompatActivity {
                         Toast.makeText(this, "Descreva a atividade", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
-                    String userId = FirebaseAuth.getInstance().getCurrentUser() != null
-                            ? FirebaseAuth.getInstance().getCurrentUser().getUid() : "desconhecido";
+                    String userId    = FirebaseAuth.getInstance().getCurrentUser() != null
+                            ? FirebaseAuth.getInstance().getCurrentUser().getUid() : "";
                     String userEmail = FirebaseAuth.getInstance().getCurrentUser() != null
-                            ? FirebaseAuth.getInstance().getCurrentUser().getEmail() : "desconhecido";
+                            ? FirebaseAuth.getInstance().getCurrentUser().getEmail() : "";
 
                     Map<String, Object> dados = new HashMap<>();
                     dados.put("descricao", descricao);
@@ -109,11 +97,10 @@ public class RegistroAtividadeActivity extends AppCompatActivity {
     private void carregarAtividades() {
         db.collection("atividades")
                 .orderBy("dataHora", com.google.firebase.firestore.Query.Direction.DESCENDING)
-                .limit(50)
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+                .limit(50).get()
+                .addOnSuccessListener(snap -> {
                     listaAtividades.clear();
-                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot doc : snap) {
                         Atividade a = doc.toObject(Atividade.class);
                         a.setId(doc.getId());
                         listaAtividades.add(a);
@@ -123,10 +110,7 @@ public class RegistroAtividadeActivity extends AppCompatActivity {
                     recyclerView.setVisibility(listaAtividades.isEmpty() ? View.GONE : View.VISIBLE);
                 });
     }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    public void onBackPressed(View view) {
+        finish();
     }
 }

@@ -3,129 +3,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="6dp"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="3dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/branco">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <View
-            android:id="@+id/viewPrioridade"
-            android:layout_width="6dp"
-            android:layout_height="match_parent"
-            android:background="@color/prioridade_alta"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="14dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:id="@+id/tvTitulo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Título da Manutenção"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/preto"
-                    android:maxLines="2"
-                    android:ellipsize="end"/>
-
-                <TextView
-                    android:id="@+id/tvStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pendente"
-                    android:textSize="11sp"
-                    android:textColor="@color/branco"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="4dp"
+        <View android:id="@+id/viewPrioridade" android:layout_width="5dp"
+            android:layout_height="match_parent" android:background="@color/prioridade_alta"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="14dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:id="@+id/tvTitulo" android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1"
+                    android:text="Título" android:textSize="14sp" android:textStyle="bold"
+                    android:textColor="@color/preto" android:maxLines="2" android:ellipsize="end"/>
+                <TextView android:id="@+id/tvStatus" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Pendente"
+                    android:textSize="10sp" android:textColor="@color/branco"
+                    android:paddingHorizontal="10dp" android:paddingVertical="4dp"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="6dp"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    android:src="@drawable/ic_equipment"
-                    android:tint="@color/cinza"/>
-
-                <TextView
-                    android:id="@+id/tvEquipamento"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Equipamento"
-                    android:textSize="13sp"
-                    android:textColor="@color/cinza_escuro"
-                    android:layout_marginStart="4dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:id="@+id/tvTipo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Preventiva"
-                    android:textSize="11sp"
-                    android:textColor="@color/primary"
-                    android:background="@color/azul_light"
-                    android:paddingHorizontal="8dp"
+            <TextView android:id="@+id/tvEquipamento" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Equipamento"
+                android:textSize="12sp" android:textColor="@color/cinza_escuro" android:layout_marginTop="4dp"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginTop="6dp" android:gravity="center_vertical">
+                <TextView android:id="@+id/tvTipo" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Preventiva"
+                    android:textSize="11sp" android:textColor="@color/primary"
+                    android:background="@color/card_consumo_bg" android:paddingHorizontal="8dp"
                     android:paddingVertical="2dp"/>
-
-                <TextView
-                    android:id="@+id/tvPrioridade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ALTA"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="8dp"/>
-
+                <TextView android:id="@+id/tvPrioridade" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="ALTA"
+                    android:textSize="11sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
                 <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/tvResponsavel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Resp.: --"
-                    android:textSize="11sp"
-                    android:textColor="@color/cinza"/>
+                <TextView android:id="@+id/tvResponsavel" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Resp.: --"
+                    android:textSize="11sp" android:textColor="@color/cinza"/>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvPrazo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Prazo: 31/12/2025"
-                android:textSize="12sp"
-                android:textColor="@color/vermelho"
-                android:layout_marginTop="4dp"
-                android:visibility="gone"/>
-
+            <TextView android:id="@+id/tvPrazo" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Prazo: --"
+                android:textSize="11sp" android:textColor="@color/vermelho"
+                android:layout_marginTop="4dp" android:visibility="gone"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

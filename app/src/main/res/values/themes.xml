@@ -1,60 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.SmartSolutionMaintenance"
-        parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
+    <style name="Theme.SmartSolutionMaintenance" parent="Theme.Material3.DayNight.NoActionBar">        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/branco</item>
         <item name="colorSecondary">@color/accent</item>
         <item name="colorSecondaryVariant">@color/accent_light</item>
         <item name="colorOnSecondary">@color/branco</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/primary_dark</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/primary_darker</item>
         <item name="android:windowBackground">@color/fundo</item>
+        <item name="android:navigationBarColor">@color/branco</item>
     </style>
 
-    <style name="Theme.SmartSolutionMaintenance.Splash" parent="Base.Theme.SmartSolutionMaintenance">
+    <style name="Theme.SmartSolution.Splash" parent="Theme.SmartSolutionMaintenance">
         <item name="android:windowBackground">@color/primary</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:statusBarColor">@color/primary</item>
     </style>
 
-    <style name="Theme.SmartSolutionMaintenance.NoActionBar" parent="Base.Theme.SmartSolutionMaintenance">
+    <style name="Theme.SmartSolution.NoActionBar" parent="Theme.SmartSolutionMaintenance">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- Botão Primário -->
+    <!-- Botão Primário Teal -->
     <style name="BotaoPrimario" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/primary</item>
         <item name="android:textColor">@color/branco</item>
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">30dp</item>
         <item name="android:paddingTop">14dp</item>
         <item name="android:paddingBottom">14dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.08</item>
     </style>
 
-    <!-- Card Style -->
-    <style name="CardApae" parent="Widget.MaterialComponents.CardView">
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">4dp</item>
+    <!-- Botão Outline -->
+    <style name="BotaoOutline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="cornerRadius">30dp</item>
+    </style>
+
+    <!-- Card padrão -->
+    <style name="CardSmartSolution" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">3dp</item>
         <item name="cardBackgroundColor">@color/branco</item>
-        <item name="android:layout_margin">8dp</item>
     </style>
 
-    <!-- Título de Seção -->
+    <!-- Toolbar transparente / teal -->
+    <style name="ToolbarSmartSolution" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/primary</item>
+        <item name="titleTextColor">@color/branco</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
     <style name="TituloSecao">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/preto</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <!-- Subtítulo -->
     <style name="Subtitulo">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/cinza</item>
-        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Input teal outline -->
+    <style name="InputSmartSolution" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="hintTextColor">@color/cinza</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
     </style>
 
 </resources>

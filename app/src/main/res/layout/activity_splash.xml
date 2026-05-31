@@ -4,37 +4,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/primary"
-    android:padding="32dp">
+    android:background="@drawable/bg_gradient_teal"
+    android:padding="40dp">
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_apae_logo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/logo_icon"
         android:contentDescription="Logo Smart Solution"
-        android:layout_marginBottom="24dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Smart Solution Maintenance"
-        android:textColor="@color/branco"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-medium"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sistema de Gestão de Recursos"
-        android:textColor="#CCFFFFFF"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginBottom="28dp"
+        android:scaleType="fitCenter"/>
 
     <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:indeterminateTint="@color/branco"
+        android:layout_marginTop="56dp"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/branco"
-        android:layout_marginTop="48dp"/>
+        android:text="Carregando..."
+        android:textColor="#CCFFFFFF"
+        android:textSize="13sp"
+        android:layout_marginTop="12dp"/>
 
 </LinearLayout>
