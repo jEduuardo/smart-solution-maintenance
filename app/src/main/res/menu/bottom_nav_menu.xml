@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/nav_dashboard"
-        android:icon="@drawable/ic_dashboard"
+    <item android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_home"
         android:title="Início"/>
-    <item
-        android:id="@+id/nav_consumo"
+    <item android:id="@+id/nav_consumo"
         android:icon="@drawable/ic_water"
         android:title="Consumo"/>
-    <item
-        android:id="@+id/nav_manutencao"
+    <item android:id="@+id/nav_manutencao"
         android:icon="@drawable/ic_maintenance"
         android:title="Manutenção"/>
-    <item
-        android:id="@+id/nav_alertas"
+    <item android:id="@+id/nav_alertas"
         android:icon="@drawable/ic_alert"
         android:title="Alertas"/>
-    <item
-        android:id="@+id/nav_mais"
+    <item android:id="@+id/nav_mais"
         android:icon="@drawable/ic_equipment"
-        android:title="Mais"/>
+        android:title="Equipamentos"/>
 </menu>

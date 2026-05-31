@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsolutionmaintenance.R;
@@ -30,19 +29,11 @@ public class EquipamentosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipamentos);
-
         db = FirebaseFirestore.getInstance();
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Equipamentos e Ativos");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
 
         recyclerView = findViewById(R.id.recyclerViewEquipamentos);
         fabAdicionar = findViewById(R.id.fabAdicionar);
-        layoutVazio = findViewById(R.id.layoutVazio);
+        layoutVazio  = findViewById(R.id.layoutVazio);
 
         listaEquipamentos = new ArrayList<>();
         adapter = new EquipamentoAdapter(listaEquipamentos);
@@ -56,32 +47,18 @@ public class EquipamentosActivity extends AppCompatActivity {
     }
 
     private void carregarEquipamentos() {
-        db.collection("equipamentos")
-                .orderBy("nome")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+        db.collection("equipamentos").orderBy("nome").get()
+                .addOnSuccessListener(snap -> {
                     listaEquipamentos.clear();
-                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot doc : snap) {
                         Equipamento e = doc.toObject(Equipamento.class);
                         e.setId(doc.getId());
                         listaEquipamentos.add(e);
                     }
                     adapter.notifyDataSetChanged();
-
-                    if (listaEquipamentos.isEmpty()) {
-                        layoutVazio.setVisibility(View.VISIBLE);
-                        recyclerView.setVisibility(View.GONE);
-                    } else {
-                        layoutVazio.setVisibility(View.GONE);
-                        recyclerView.setVisibility(View.VISIBLE);
-                    }
+                    layoutVazio.setVisibility(listaEquipamentos.isEmpty() ? View.VISIBLE : View.GONE);
+                    recyclerView.setVisibility(listaEquipamentos.isEmpty() ? View.GONE : View.VISIBLE);
                 });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
     @Override

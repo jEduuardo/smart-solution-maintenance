@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsolutionmaintenance.R;
@@ -35,23 +34,15 @@ public class ManutencaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manutencao);
-
         db = FirebaseFirestore.getInstance();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Controle de Manutenções");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-        recyclerView = findViewById(R.id.recyclerViewManutencao);
-        fabAdicionar = findViewById(R.id.fabAdicionar);
-        chipGroupStatus = findViewById(R.id.chipGroupStatus);
-        layoutVazio = findViewById(R.id.layoutVazio);
-        tvTotalPendentes = findViewById(R.id.tvTotalPendentes);
-        tvTotalAndamento = findViewById(R.id.tvTotalAndamento);
-        tvTotalConcluidas = findViewById(R.id.tvTotalConcluidas);
+        recyclerView       = findViewById(R.id.recyclerViewManutencao);
+        fabAdicionar       = findViewById(R.id.fabAdicionar);
+        chipGroupStatus    = findViewById(R.id.chipGroupStatus);
+        layoutVazio        = findViewById(R.id.layoutVazio);
+        tvTotalPendentes   = findViewById(R.id.tvTotalPendentes);
+        tvTotalAndamento   = findViewById(R.id.tvTotalAndamento);
+        tvTotalConcluidas  = findViewById(R.id.tvTotalConcluidas);
 
         listaManutencao = new ArrayList<>();
         adapter = new ManutencaoAdapter(listaManutencao, this);
@@ -65,10 +56,10 @@ public class ManutencaoActivity extends AppCompatActivity {
             if (!checkedIds.isEmpty()) {
                 Chip chip = group.findViewById(checkedIds.get(0));
                 if (chip != null) {
-                    String status = chip.getText().toString().toLowerCase();
-                    if (status.equals("todas")) carregarManutencoes(null);
-                    else if (status.equals("pendente")) carregarManutencoes("pendente");
-                    else if (status.equals("em andamento")) carregarManutencoes("em_andamento");
+                    String txt = chip.getText().toString().toLowerCase();
+                    if (txt.equals("todas")) carregarManutencoes(null);
+                    else if (txt.equals("pendente")) carregarManutencoes("pendente");
+                    else if (txt.contains("andamento")) carregarManutencoes("em_andamento");
                     else carregarManutencoes("concluido");
                 }
             }
@@ -81,12 +72,9 @@ public class ManutencaoActivity extends AppCompatActivity {
     private void carregarContadores() {
         String[] statuses = {"pendente", "em_andamento", "concluido"};
         TextView[] tvs = {tvTotalPendentes, tvTotalAndamento, tvTotalConcluidas};
-
         for (int i = 0; i < statuses.length; i++) {
             final int idx = i;
-            db.collection("manutencoes")
-                    .whereEqualTo("status", statuses[i])
-                    .get()
+            db.collection("manutencoes").whereEqualTo("status", statuses[i]).get()
                     .addOnSuccessListener(snap -> tvs[idx].setText(String.valueOf(snap.size())));
         }
     }
@@ -94,34 +82,19 @@ public class ManutencaoActivity extends AppCompatActivity {
     private void carregarManutencoes(String status) {
         com.google.firebase.firestore.Query query = db.collection("manutencoes")
                 .orderBy("prioridade", com.google.firebase.firestore.Query.Direction.DESCENDING);
+        if (status != null) query = query.whereEqualTo("status", status);
 
-        if (status != null) {
-            query = query.whereEqualTo("status", status);
-        }
-
-        query.get().addOnSuccessListener(queryDocumentSnapshots -> {
+        query.get().addOnSuccessListener(snap -> {
             listaManutencao.clear();
-            for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+            for (QueryDocumentSnapshot doc : snap) {
                 Manutencao m = doc.toObject(Manutencao.class);
                 m.setId(doc.getId());
                 listaManutencao.add(m);
             }
             adapter.notifyDataSetChanged();
-
-            if (listaManutencao.isEmpty()) {
-                layoutVazio.setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.GONE);
-            } else {
-                layoutVazio.setVisibility(View.GONE);
-                recyclerView.setVisibility(View.VISIBLE);
-            }
+            layoutVazio.setVisibility(listaManutencao.isEmpty() ? View.VISIBLE : View.GONE);
+            recyclerView.setVisibility(listaManutencao.isEmpty() ? View.GONE : View.VISIBLE);
         });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
     @Override

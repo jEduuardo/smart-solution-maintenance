@@ -1,4 +1,5 @@
 package com.example.smartsolutionmaintenance.adapters;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsolutionmaintenance.R;
+import com.example.smartsolutionmaintenance.activities.AlertasActivity;
 import com.example.smartsolutionmaintenance.models.Alerta;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -27,8 +29,9 @@ public class AlertaAdapter extends RecyclerView.Adapter<AlertaAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        return new ViewHolder(null);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_alerta, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -52,7 +55,9 @@ public class AlertaAdapter extends RecyclerView.Adapter<AlertaAdapter.ViewHolder
 
         holder.btnResolver.setVisibility(ativo ? View.VISIBLE : View.GONE);
         holder.btnResolver.setOnClickListener(v -> {
-
+            if (context instanceof AlertasActivity) {
+                ((AlertasActivity) context).marcarComoResolvido(a.getId());
+            }
         });
 
         // Prioridade cor
@@ -80,6 +85,7 @@ public class AlertaAdapter extends RecyclerView.Adapter<AlertaAdapter.ViewHolder
             tvSetor = itemView.findViewById(R.id.tvSetor);
             tvData = itemView.findViewById(R.id.tvData);
             tvStatus = itemView.findViewById(R.id.tvStatus);
+            btnResolver = itemView.findViewById(R.id.btnResolver);
         }
     }
 }

@@ -6,110 +6,72 @@
     android:orientation="vertical"
     android:background="@color/fundo">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
-        app:titleTextColor="@color/branco"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:background="@drawable/bg_gradient_teal"
+        android:padding="16dp" android:gravity="center_vertical">
+        <ImageButton android:id="@+id/btnVoltar" android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back" android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Voltar" android:onClick="onBackPressed"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Novo Registro de Consumo" android:textColor="@color/branco"
+            android:textSize="18sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+    </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:cardCornerRadius="18dp" app:cardElevation="3dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="20dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Informações do Consumo"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/primary"
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Informações do Consumo" android:textSize="15sp"
+                        android:textStyle="bold" android:textColor="@color/primary"
                         android:layout_marginBottom="16dp"/>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Tipo de Consumo *"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Tipo de Consumo *"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_marginBottom="12dp">
-                        <AutoCompleteTextView
-                            android:id="@+id/spinnerTipo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"/>
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <AutoCompleteTextView android:id="@+id/spinnerTipo" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Setor *"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Setor *"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_marginBottom="12dp">
-                        <AutoCompleteTextView
-                            android:id="@+id/spinnerSetor"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"/>
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <AutoCompleteTextView android:id="@+id/spinnerSetor" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Valor (m³ ou kWh) *"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Valor (m³ ou kWh) *"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtValor"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtValor"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="numberDecimal"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Leitura do Medidor"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Leitura do Medidor"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtLeitura"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtLeitura"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="numberDecimal"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Observações"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Observações"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtObservacao"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textMultiLine"
-                            android:minLines="2"
-                            android:maxLines="4"/>
+                        app:boxStrokeColor="@color/primary">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtObservacao"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:inputType="textMultiLine" android:minLines="2" android:maxLines="4"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -117,13 +79,12 @@
 
             <Button
                 android:id="@+id/btnSalvar"
+                style="@style/BotaoPrimario"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="SALVAR REGISTRO"
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                style="@style/BotaoPrimario"/>
-
+                android:text="SALVAR REGISTRO"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

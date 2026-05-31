@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsolutionmaintenance.R;
@@ -36,23 +35,15 @@ public class ConsumoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consumo);
-
         db = FirebaseFirestore.getInstance();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Consumo de Recursos");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-        recyclerView = findViewById(R.id.recyclerViewConsumo);
-        spinnerTipo = findViewById(R.id.spinnerTipo);
-        fabAdicionar = findViewById(R.id.fabAdicionar);
-        tvMediaMensal = findViewById(R.id.tvMediaMensal);
+        recyclerView     = findViewById(R.id.recyclerViewConsumo);
+        spinnerTipo      = findViewById(R.id.spinnerTipo);
+        fabAdicionar     = findViewById(R.id.fabAdicionar);
+        tvMediaMensal    = findViewById(R.id.tvMediaMensal);
         tvUltimoRegistro = findViewById(R.id.tvUltimoRegistro);
-        tvVariacao = findViewById(R.id.tvVariacao);
-        layoutVazio = findViewById(R.id.layoutVazio);
+        tvVariacao       = findViewById(R.id.tvVariacao);
+        layoutVazio      = findViewById(R.id.layoutVazio);
 
         listaConsumo = new ArrayList<>();
         adapter = new ConsumoAdapter(listaConsumo);
@@ -60,7 +51,6 @@ public class ConsumoActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         configurarSpinner();
-
         fabAdicionar.setOnClickListener(v ->
                 startActivity(new Intent(this, NovoRegistroConsumoActivity.class)));
 
@@ -68,17 +58,16 @@ public class ConsumoActivity extends AppCompatActivity {
     }
 
     private void configurarSpinner() {
-        String[] tipos = {"Água", "Energia"};
+        String[] tiposDisplay = {"Água", "Energia"};
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, tipos);
+                android.R.layout.simple_spinner_item, tiposDisplay);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTipo.setAdapter(adapterSpinner);
 
         spinnerTipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String tipo = position == 0 ? "agua" : "energia";
-                carregarConsumo(tipo);
+                carregarConsumo(position == 0 ? "agua" : "energia");
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
@@ -91,17 +80,16 @@ public class ConsumoActivity extends AppCompatActivity {
                 .orderBy("data", com.google.firebase.firestore.Query.Direction.DESCENDING)
                 .limit(30)
                 .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+                .addOnSuccessListener(snap -> {
                     listaConsumo.clear();
                     double soma = 0;
-                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot doc : snap) {
                         Consumo c = doc.toObject(Consumo.class);
                         c.setId(doc.getId());
                         listaConsumo.add(c);
                         if (c.getValor() > 0) soma += c.getValor();
                     }
                     adapter.notifyDataSetChanged();
-
                     if (listaConsumo.isEmpty()) {
                         layoutVazio.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
@@ -111,26 +99,15 @@ public class ConsumoActivity extends AppCompatActivity {
                         String unidade = tipo.equals("agua") ? "m³" : "kWh";
                         double media = soma / listaConsumo.size();
                         tvMediaMensal.setText(String.format("Média: %.1f %s", media, unidade));
-                        Consumo ultimo = listaConsumo.get(0);
-                        tvUltimoRegistro.setText(String.format("Último: %.1f %s", ultimo.getValor(), unidade));
+                        tvUltimoRegistro.setText(String.format("Último: %.1f %s",
+                                listaConsumo.get(0).getValor(), unidade));
                     }
-                })
-                .addOnFailureListener(e -> {
-                    layoutVazio.setVisibility(View.VISIBLE);
-                    recyclerView.setVisibility(View.GONE);
                 });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        int pos = spinnerTipo.getSelectedItemPosition();
-        carregarConsumo(pos == 0 ? "agua" : "energia");
+        carregarConsumo(spinnerTipo.getSelectedItemPosition() == 0 ? "agua" : "energia");
     }
 }

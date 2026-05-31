@@ -2,12 +2,9 @@ package com.example.smartsolutionmaintenance.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsolutionmaintenance.R;
@@ -16,6 +13,7 @@ import com.example.smartsolutionmaintenance.models.Instituicao;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
@@ -36,19 +34,11 @@ public class InstituicaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instituicao);
-
         db = FirebaseFirestore.getInstance();
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Instituições e Setores");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
 
         recyclerView = findViewById(R.id.recyclerViewInstituicoes);
         fabAdicionar = findViewById(R.id.fabAdicionar);
-        layoutVazio = findViewById(R.id.layoutVazio);
+        layoutVazio  = findViewById(R.id.layoutVazio);
 
         listaInstituicoes = new ArrayList<>();
         adapter = new InstituicaoAdapter(listaInstituicoes);
@@ -56,17 +46,16 @@ public class InstituicaoActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         fabAdicionar.setOnClickListener(v -> mostrarDialogNovaInstituicao());
-
         carregarInstituicoes();
     }
 
     private void mostrarDialogNovaInstituicao() {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_nova_instituicao, null);
-        TextInputEditText edtNome = dialogView.findViewById(R.id.edtNomeInstituicao);
-        TextInputEditText edtEndereco = dialogView.findViewById(R.id.edtEndereco);
+        TextInputEditText edtNome        = dialogView.findViewById(R.id.edtNomeInstituicao);
+        TextInputEditText edtEndereco    = dialogView.findViewById(R.id.edtEndereco);
         TextInputEditText edtResponsavel = dialogView.findViewById(R.id.edtResponsavel);
-        TextInputEditText edtTelefone = dialogView.findViewById(R.id.edtTelefone);
-        TextInputEditText edtSetores = dialogView.findViewById(R.id.edtSetores);
+        TextInputEditText edtTelefone    = dialogView.findViewById(R.id.edtTelefone);
+        TextInputEditText edtSetores     = dialogView.findViewById(R.id.edtSetores);
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle("Nova Instituição")
@@ -77,34 +66,28 @@ public class InstituicaoActivity extends AppCompatActivity {
                         Toast.makeText(this, "Nome é obrigatório", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
                     Map<String, Object> dados = new HashMap<>();
                     dados.put("nome", nome);
                     dados.put("endereco", edtEndereco.getText().toString().trim());
                     dados.put("responsavel", edtResponsavel.getText().toString().trim());
                     dados.put("telefone", edtTelefone.getText().toString().trim());
                     dados.put("setores", edtSetores.getText().toString().trim());
-                    dados.put("dataCadastro", com.google.firebase.Timestamp.now());
-
+                    dados.put("dataCadastro", Timestamp.now());
                     db.collection("instituicoes").add(dados)
                             .addOnSuccessListener(ref -> {
                                 Toast.makeText(this, "Instituição cadastrada!", Toast.LENGTH_SHORT).show();
                                 carregarInstituicoes();
-                            })
-                            .addOnFailureListener(e ->
-                                    Toast.makeText(this, "Erro ao salvar", Toast.LENGTH_SHORT).show());
+                            });
                 })
                 .setNegativeButton("Cancelar", null)
                 .show();
     }
 
     private void carregarInstituicoes() {
-        db.collection("instituicoes")
-                .orderBy("nome")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+        db.collection("instituicoes").orderBy("nome").get()
+                .addOnSuccessListener(snap -> {
                     listaInstituicoes.clear();
-                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot doc : snap) {
                         Instituicao inst = doc.toObject(Instituicao.class);
                         inst.setId(doc.getId());
                         listaInstituicoes.add(inst);
@@ -113,11 +96,5 @@ public class InstituicaoActivity extends AppCompatActivity {
                     layoutVazio.setVisibility(listaInstituicoes.isEmpty() ? View.VISIBLE : View.GONE);
                     recyclerView.setVisibility(listaInstituicoes.isEmpty() ? View.GONE : View.VISIBLE);
                 });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 }

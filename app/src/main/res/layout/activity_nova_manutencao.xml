@@ -6,177 +6,121 @@
     android:orientation="vertical"
     android:background="@color/fundo">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/verde"
-        app:titleTextColor="@color/branco"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:background="@drawable/bg_gradient_teal"
+        android:padding="16dp" android:gravity="center_vertical">
+        <ImageButton android:id="@+id/btnVoltar" android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back" android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Voltar" android:onClick="onBackPressed"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Nova Manutenção" android:textColor="@color/branco"
+            android:textSize="18sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+    </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:cardCornerRadius="18dp" app:cardElevation="3dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="20dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dados da Manutenção"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/verde"
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Dados da Manutenção" android:textSize="15sp"
+                        android:textStyle="bold" android:textColor="@color/primary"
                         android:layout_marginBottom="16dp"/>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Título *"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Título *"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtTitulo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtTitulo"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="textCapSentences"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Descrição"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Descrição"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtDescricao"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textMultiLine"
-                            android:minLines="2"
-                            android:maxLines="5"/>
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtDescricao"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:inputType="textMultiLine" android:minLines="2" android:maxLines="4"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Equipamento"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Equipamento"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtEquipamento"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtEquipamento"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="textCapWords"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Responsável"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Responsável"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtResponsavel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtResponsavel"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="textPersonName"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Prazo (dd/mm/aaaa)"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Prazo (dd/mm/aaaa)"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtPrazo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtPrazo"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="datetime"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Custo Estimado (R$)"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Custo Estimado (R$)"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtCusto"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtCusto"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="numberDecimal"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Prioridade *"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Prioridade *"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_marginBottom="12dp">
-                        <AutoCompleteTextView
-                            android:id="@+id/spinnerPrioridade"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <AutoCompleteTextView android:id="@+id/spinnerPrioridade"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Tipo de Manutenção"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Tipo de Manutenção"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_marginBottom="12dp">
-                        <AutoCompleteTextView
-                            android:id="@+id/spinnerTipo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary" android:layout_marginBottom="12dp">
+                        <AutoCompleteTextView android:id="@+id/spinnerTipo"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Status"
+                    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="Status"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_marginBottom="8dp">
-                        <AutoCompleteTextView
-                            android:id="@+id/spinnerStatus"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/primary">
+                        <AutoCompleteTextView android:id="@+id/spinnerStatus"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnSalvar"
+                style="@style/BotaoPrimario"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="SALVAR MANUTENÇÃO"
-                android:textStyle="bold"
+                android:layout_height="72dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/verde"
-                style="@style/BotaoPrimario"/>
-
+                android:text="SALVAR MANUTENÇÃO"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
